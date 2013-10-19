@@ -8,8 +8,3 @@ C:\Users\Ivan Oliveri\Documents\Visual Studio 2010\Projects\TP-Matematica-Superi
 C:\Users\Ivan Oliveri\Documents\Visual Studio 2010\Projects\TP-Matematica-Superior\Domain\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Ivan Oliveri\Documents\Visual Studio 2010\Projects\TP-Matematica-Superior\Domain\obj\Debug\DomainTwo.dll
 C:\Users\Ivan Oliveri\Documents\Visual Studio 2010\Projects\TP-Matematica-Superior\Domain\obj\Debug\DomainTwo.pdb
-C:\Users\Ivan Oliveri\Documents\GitHub\TP-Matematica-Superior-2C-2012\Domain\bin\Debug\DomainTwo.dll
-C:\Users\Ivan Oliveri\Documents\GitHub\TP-Matematica-Superior-2C-2012\Domain\bin\Debug\DomainTwo.pdb
-C:\Users\Ivan Oliveri\Documents\GitHub\TP-Matematica-Superior-2C-2012\Domain\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Ivan Oliveri\Documents\GitHub\TP-Matematica-Superior-2C-2012\Domain\obj\Debug\DomainTwo.dll
-C:\Users\Ivan Oliveri\Documents\GitHub\TP-Matematica-Superior-2C-2012\Domain\obj\Debug\DomainTwo.pdb
