@@ -1,0 +1,7 @@
+C:\Users\Ivan Oliveri\Documents\Visual Studio 2010\Projects\TP-Matematica-Superior\Test\bin\Debug\Test.dll
+C:\Users\Ivan Oliveri\Documents\Visual Studio 2010\Projects\TP-Matematica-Superior\Test\bin\Debug\Test.pdb
+C:\Users\Ivan Oliveri\Documents\Visual Studio 2010\Projects\TP-Matematica-Superior\Test\bin\Debug\DomainTwo.dll
+C:\Users\Ivan Oliveri\Documents\Visual Studio 2010\Projects\TP-Matematica-Superior\Test\bin\Debug\DomainTwo.pdb
+C:\Users\Ivan Oliveri\Documents\Visual Studio 2010\Projects\TP-Matematica-Superior\Test\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Ivan Oliveri\Documents\Visual Studio 2010\Projects\TP-Matematica-Superior\Test\obj\Debug\Test.dll
+C:\Users\Ivan Oliveri\Documents\Visual Studio 2010\Projects\TP-Matematica-Superior\Test\obj\Debug\Test.pdb

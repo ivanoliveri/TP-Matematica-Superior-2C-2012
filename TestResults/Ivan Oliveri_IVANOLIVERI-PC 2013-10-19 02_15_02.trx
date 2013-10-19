@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="02019fcc-b821-4f1e-b232-e27e43fd83af" name="Ivan Oliveri@IVANOLIVERI-PC 2013-10-19 02:15:02" runUser="IvanOliveri-PC\Ivan Oliveri" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="6b37e41e-5d41-4cba-bd50-32b3bbaeff00">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Ivan Oliveri_IVANOLIVERI-PC 2013-10-19 02_15_02">
+      <DeploymentItem filename="C:\Users\Ivan Oliveri\Documents\Visual Studio 2010\Projects\TP-Matematica-Superior\Domain\bin\Debug\DomainTwo.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2013-10-19T02:15:02.9901643-03:00" queuing="2013-10-19T02:15:03.2063737-03:00" start="2013-10-19T02:15:03.3030527-03:00" finish="2013-10-19T02:15:05.1320436-03:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TestCoefficient1" storage="c:\users\ivan oliveri\documents\visual studio 2010\projects\tp-matematica-superior\test\bin\debug\test.dll" id="55561182-3da7-c2e4-bb94-ed045a552f5b">
+      <Execution id="5a85071c-3aa7-48e4-8677-ca9122a9e272" />
+      <TestMethod codeBase="C:/Users/Ivan Oliveri/Documents/Visual Studio 2010/Projects/TP-Matematica-Superior/Test/bin/Debug/Test.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test.CoefficientsTest, Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestCoefficient1" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="55561182-3da7-c2e4-bb94-ed045a552f5b" executionId="5a85071c-3aa7-48e4-8677-ca9122a9e272" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="5a85071c-3aa7-48e4-8677-ca9122a9e272" testId="55561182-3da7-c2e4-bb94-ed045a552f5b" testName="TestCoefficient1" computerName="IVANOLIVERI-PC" duration="00:00:00.3126820" startTime="2013-10-19T02:15:03.5816640-03:00" endTime="2013-10-19T02:15:04.6961092-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5a85071c-3aa7-48e4-8677-ca9122a9e272">
+    </UnitTestResult>
+  </Results>
+</TestRun>
