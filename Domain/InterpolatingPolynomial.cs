@@ -23,7 +23,7 @@ namespace Domain
             coefficients = new List<float>();
         }
 
-        public int calculateProgressiveDifferencesOfOrdenedPairs(int maxOrder,List<OrdenedPair> someOrdenedPairs){
+        public int calculateForwardDifferencesOfOrdenedPairs(int maxOrder,List<OrdenedPair> someOrdenedPairs){
 
             List<OrdenedPair> resultantOrdenedPairds=null;
 
@@ -54,21 +54,35 @@ namespace Domain
 
             for (int count = 1; count < ordenedPairs.Count; count++)
             {
-                float newCoefficient = ((float)ordenedPairs.ElementAt(0).yValue * (float)calculateProgressiveDifferencesOfOrdenedPairs(count, ordenedPairs.Take(count + 1).ToList<OrdenedPair>())) / ((float)MathHelper.calculateFactorial(count) * (float) (ordenedPairs.ElementAt(count).xValue - ordenedPairs.ElementAt(count - 1).xValue));
+                float newCoefficient = ((float)ordenedPairs.ElementAt(0).yValue * (float)calculateForwardDifferencesOfOrdenedPairs(count, ordenedPairs.Take(count + 1).ToList<OrdenedPair>())) / ((float)MathHelper.calculateFactorial(count) * (float) (ordenedPairs.ElementAt(count).xValue - ordenedPairs.ElementAt(count - 1).xValue));
                 coefficients.Add(newCoefficient);
             }
 
             return coefficients;
         }
 
-        public void calculateInterpolatingPolynomial()
+        public string calculateInterpolatingPolynomialUsingForwardDifferences()
         {
+            calculateCoefficients();
 
+            var stringBuilder = new StringBuilder();
+
+            stringBuilder.Append(coefficients.ElementAt(0));
+
+            for (int count = 1; count <= coefficients.Count - 1; count++)
+            {
+                stringBuilder.Append(" + " + coefficients.ElementAt(count));
+
+                for (int auxCount = 0; auxCount < count; auxCount++)
+                    stringBuilder.Append(" * ( X - " + ordenedPairs.ElementAt(auxCount).xValue +" )");
+               
+            }
+
+            return stringBuilder.ToString();
         }
 
-        public string getInterpolatingPolynomial()
+        public string calculateInterpolatingPolynomialUsingBackwardDifferences()
         {
-            calculateInterpolatingPolynomial();
             throw new NotImplementedException();
         }
 

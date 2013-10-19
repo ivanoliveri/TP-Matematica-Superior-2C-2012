@@ -8,11 +8,11 @@ using Domain;
 namespace Test
 {
     [TestClass]
-    public class ProgressiveDifferencesTest
+    public class ForwardDifferencesTest
     {
         //Ejemplo extraido de la pagina 81 de la Guia Teorica @ 2 Parte
         [TestMethod]
-        public void TestProgressiveDifference1()
+        public void TestForwardDifference1()
         {
             var ordenedPairOne = new OrdenedPair { xValue = 0, yValue = 2 };
             var ordenedPairTwo = new OrdenedPair { xValue = 1, yValue = 3 };
@@ -30,7 +30,7 @@ namespace Test
             interpolatingPolynomial.ordenedPairs.Add(ordenedPairFive);
             interpolatingPolynomial.ordenedPairs.Add(ordenedPairSix);
 
-            var result = interpolatingPolynomial.calculateProgressiveDifferencesOfOrdenedPairs(5,interpolatingPolynomial.ordenedPairs);
+            var result = interpolatingPolynomial.calculateForwardDifferencesOfOrdenedPairs(5,interpolatingPolynomial.ordenedPairs);
 
             Assert.AreEqual(16, result);
         }

@@ -34,6 +34,9 @@ namespace GUI
             ordenedPairs.Add(newOrdenedPair);
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = ordenedPairs;
+
+            txtXValue.Clear();      
+            txtYValue.Clear();
         }
 
         private void btnDeleteSelectedOrdenedPair_Click(object sender, EventArgs e)
@@ -49,6 +52,12 @@ namespace GUI
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnCalculate_Click(object sender, EventArgs e)
+        {
+            var interpolatingPolynomial = new InterpolatingPolynomial() { ordenedPairs=this.ordenedPairs};
+            txtForwardInterpolatingPolynomial.Text = interpolatingPolynomial.calculateInterpolatingPolynomialUsingForwardDifferences();
         }
 
     }

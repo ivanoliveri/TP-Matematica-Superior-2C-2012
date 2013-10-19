@@ -38,8 +38,8 @@
             this.btnDeleteSelectedOrdenedPair = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBackwardInterpolatingPolynomial = new System.Windows.Forms.TextBox();
+            this.txtForwardInterpolatingPolynomial = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -140,8 +140,8 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.textBox2);
-            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.txtBackwardInterpolatingPolynomial);
+            this.groupBox3.Controls.Add(this.txtForwardInterpolatingPolynomial);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Location = new System.Drawing.Point(13, 316);
@@ -151,19 +151,19 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Resultados";
             // 
-            // textBox2
+            // txtBackwardInterpolatingPolynomial
             // 
-            this.textBox2.Location = new System.Drawing.Point(124, 59);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(246, 20);
-            this.textBox2.TabIndex = 3;
+            this.txtBackwardInterpolatingPolynomial.Location = new System.Drawing.Point(124, 59);
+            this.txtBackwardInterpolatingPolynomial.Name = "txtBackwardInterpolatingPolynomial";
+            this.txtBackwardInterpolatingPolynomial.Size = new System.Drawing.Size(246, 20);
+            this.txtBackwardInterpolatingPolynomial.TabIndex = 3;
             // 
-            // textBox1
+            // txtForwardInterpolatingPolynomial
             // 
-            this.textBox1.Location = new System.Drawing.Point(124, 26);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(246, 20);
-            this.textBox1.TabIndex = 2;
+            this.txtForwardInterpolatingPolynomial.Location = new System.Drawing.Point(124, 26);
+            this.txtForwardInterpolatingPolynomial.Name = "txtForwardInterpolatingPolynomial";
+            this.txtForwardInterpolatingPolynomial.Size = new System.Drawing.Size(246, 20);
+            this.txtForwardInterpolatingPolynomial.TabIndex = 2;
             // 
             // label4
             // 
@@ -202,6 +202,7 @@
             this.btnCalculate.TabIndex = 6;
             this.btnCalculate.Text = "Calcular";
             this.btnCalculate.UseVisualStyleBackColor = true;
+            this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
             // 
             // btnExit
             // 
@@ -248,8 +249,8 @@
         private System.Windows.Forms.Button btnDeleteSelectedOrdenedPair;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBackwardInterpolatingPolynomial;
+        private System.Windows.Forms.TextBox txtForwardInterpolatingPolynomial;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox4;
