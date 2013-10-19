@@ -6,3 +6,14 @@ C:\Users\Ivan Oliveri\Documents\Visual Studio 2010\Projects\TP-Matematica-Superi
 C:\Users\Ivan Oliveri\Documents\Visual Studio 2010\Projects\TP-Matematica-Superior\GUI\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\Ivan Oliveri\Documents\Visual Studio 2010\Projects\TP-Matematica-Superior\GUI\obj\x86\Debug\GUI.exe
 C:\Users\Ivan Oliveri\Documents\Visual Studio 2010\Projects\TP-Matematica-Superior\GUI\obj\x86\Debug\GUI.pdb
+C:\Users\Ivan Oliveri\Documents\GitHub\TP-Matematica-Superior-2C-2012\GUI\obj\x86\Debug\GUI.exe
+C:\Users\Ivan Oliveri\Documents\GitHub\TP-Matematica-Superior-2C-2012\GUI\obj\x86\Debug\GUI.pdb
+C:\Users\Ivan Oliveri\Documents\GitHub\TP-Matematica-Superior-2C-2012\GUI\bin\Debug\GUI.exe
+C:\Users\Ivan Oliveri\Documents\GitHub\TP-Matematica-Superior-2C-2012\GUI\bin\Debug\GUI.pdb
+C:\Users\Ivan Oliveri\Documents\GitHub\TP-Matematica-Superior-2C-2012\GUI\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Ivan Oliveri\Documents\GitHub\TP-Matematica-Superior-2C-2012\GUI\obj\x86\Debug\GUI.frmMain.resources
+C:\Users\Ivan Oliveri\Documents\GitHub\TP-Matematica-Superior-2C-2012\GUI\obj\x86\Debug\GUI.Properties.Resources.resources
+C:\Users\Ivan Oliveri\Documents\GitHub\TP-Matematica-Superior-2C-2012\GUI\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Ivan Oliveri\Documents\GitHub\TP-Matematica-Superior-2C-2012\GUI\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Ivan Oliveri\Documents\GitHub\TP-Matematica-Superior-2C-2012\GUI\bin\Debug\DomainTwo.dll
+C:\Users\Ivan Oliveri\Documents\GitHub\TP-Matematica-Superior-2C-2012\GUI\bin\Debug\DomainTwo.pdb
