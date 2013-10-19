@@ -35,5 +35,21 @@ namespace GUI
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = ordenedPairs;
         }
+
+        private void btnDeleteSelectedOrdenedPair_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentCell != null)            {
+                var index = dataGridView1.CurrentCell.RowIndex;
+                ordenedPairs.RemoveAt(index);
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = ordenedPairs;
+            }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
     }
 }
