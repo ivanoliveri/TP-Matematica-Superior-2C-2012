@@ -25,6 +25,13 @@ namespace GUI
 
         private void btnAddOrdenedPair_Click(object sender, EventArgs e)
         {
+
+            if (txtXValue.Text.Trim().Equals("") || txtYValue.Text.Trim().Equals(""))
+            {
+                MessageBox.Show("No has ingresado los valores de X y/o Y.");
+                return;
+            }
+
             var newOrdenedPair = new OrdenedPair()
             {
                 xValue = int.Parse(txtXValue.Text),
@@ -32,6 +39,7 @@ namespace GUI
             };
 
             ordenedPairs.Add(newOrdenedPair);
+            ordenedPairs = ordenedPairs.OrderByDescending(aPair => aPair.xValue).Reverse().ToList();
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = ordenedPairs;
 
@@ -44,6 +52,7 @@ namespace GUI
             if (dataGridView1.CurrentCell != null)            {
                 var index = dataGridView1.CurrentCell.RowIndex;
                 ordenedPairs.RemoveAt(index);
+                ordenedPairs = ordenedPairs.OrderByDescending(aPair => aPair.xValue).Reverse().ToList();
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = ordenedPairs;
             }
