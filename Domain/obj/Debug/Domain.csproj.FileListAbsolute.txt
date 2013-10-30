@@ -13,3 +13,8 @@ C:\Users\Ivan Oliveri\Documents\GitHub\TP-Matematica-Superior-2C-2012\Domain\bin
 C:\Users\Ivan Oliveri\Documents\GitHub\TP-Matematica-Superior-2C-2012\Domain\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Ivan Oliveri\Documents\GitHub\TP-Matematica-Superior-2C-2012\Domain\obj\Debug\DomainTwo.dll
 C:\Users\Ivan Oliveri\Documents\GitHub\TP-Matematica-Superior-2C-2012\Domain\obj\Debug\DomainTwo.pdb
+C:\Users\p0wn\Documents\GitHub\TP-Matematica-Superior-2C-2012\Domain\bin\Debug\DomainTwo.dll
+C:\Users\p0wn\Documents\GitHub\TP-Matematica-Superior-2C-2012\Domain\bin\Debug\DomainTwo.pdb
+C:\Users\p0wn\Documents\GitHub\TP-Matematica-Superior-2C-2012\Domain\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\p0wn\Documents\GitHub\TP-Matematica-Superior-2C-2012\Domain\obj\Debug\DomainTwo.dll
+C:\Users\p0wn\Documents\GitHub\TP-Matematica-Superior-2C-2012\Domain\obj\Debug\DomainTwo.pdb

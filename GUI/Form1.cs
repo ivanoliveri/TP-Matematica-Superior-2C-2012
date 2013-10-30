@@ -23,7 +23,7 @@ namespace GUI
             
         }
 
-        private void btnAddOrdenedPair_Click(object sender, EventArgs e)
+		        private void btnAddOrdenedPair_Click(object sender, EventArgs e)
         {
 
             if (txtXValue.Text.Trim().Equals("") || txtYValue.Text.Trim().Equals(""))
@@ -32,19 +32,30 @@ namespace GUI
                 return;
             }
 
-            var newOrdenedPair = new OrdenedPair()
+            int parsedX = -1, parsedY = -1;
+            if ((int.TryParse(txtXValue.Text, out parsedX)) & (int.TryParse(txtYValue.Text, out parsedY)))
             {
-                xValue = int.Parse(txtXValue.Text),
-                yValue = int.Parse(txtYValue.Text)
-            };
+                var newOrdenedPair = new OrdenedPair()
+                {
+                    xValue = int.Parse(txtXValue.Text),
+                    yValue = int.Parse(txtYValue.Text)
+                };
 
-            ordenedPairs.Add(newOrdenedPair);
-            ordenedPairs = ordenedPairs.OrderByDescending(aPair => aPair.xValue).Reverse().ToList();
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = ordenedPairs;
 
-            txtXValue.Clear();      
-            txtYValue.Clear();
+                ordenedPairs.Add(newOrdenedPair);
+                ordenedPairs = ordenedPairs.OrderByDescending(aPair => aPair.xValue).Reverse().ToList();
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = ordenedPairs;
+
+                txtXValue.Clear();
+                txtYValue.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Datos no válidos ingresados de X y/o Y.");
+                return;
+            }
+
         }
 
         private void btnDeleteSelectedOrdenedPair_Click(object sender, EventArgs e)
@@ -65,8 +76,16 @@ namespace GUI
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
-            var interpolatingPolynomial = new InterpolatingPolynomial() { ordenedPairs=this.ordenedPairs};
-            txtForwardInterpolatingPolynomial.Text = interpolatingPolynomial.calculateInterpolatingPolynomialUsingForwardDifferences();
+            if (this.ordenedPairs.Any())
+            {
+                var interpolatingPolynomial = new InterpolatingPolynomial() { ordenedPairs = this.ordenedPairs };
+                txtForwardInterpolatingPolynomial.Text = interpolatingPolynomial.calculateInterpolatingPolynomialUsingForwardDifferences();
+            }
+            else
+            {
+                MessageBox.Show("Debe ingresar datos");
+                return;
+            }
         }
 
     }
