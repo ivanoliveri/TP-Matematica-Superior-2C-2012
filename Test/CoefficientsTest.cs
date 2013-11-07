@@ -12,7 +12,7 @@ namespace Test
     {
         //Ejemplo extraido de la pagina 82 de la Guia Teorica @ 2 Parte
         [TestMethod]
-        public void TestCoefficient1()
+        public void test_coefficients_1()
         {
             var ordenedPairOne = new OrdenedPair { xValue = 0, yValue = 1 };
             var ordenedPairTwo = new OrdenedPair { xValue = 1, yValue = 1 };

@@ -12,7 +12,7 @@ namespace Test
     {
         //Ejemplo extraido de la pagina 81 de la Guia Teorica @ 2 Parte
         [TestMethod]
-        public void TestForwardDifference1()
+        public void test_forward_differences_1()
         {
             var ordenedPairOne = new OrdenedPair { xValue = 0, yValue = 2 };
             var ordenedPairTwo = new OrdenedPair { xValue = 1, yValue = 3 };

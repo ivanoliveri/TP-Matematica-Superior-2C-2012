@@ -17,5 +17,10 @@ namespace Domain
             return newResult;
 
         }
+
+        public static int calculateCombination(int oneNumber,int anotherNumber)
+        {
+            return calculateFactorial(oneNumber) / ((calculateFactorial(anotherNumber)) * (calculateFactorial(oneNumber - anotherNumber)));
+        }
     }
 }
