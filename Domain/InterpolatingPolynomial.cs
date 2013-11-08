@@ -53,8 +53,8 @@ namespace Domain
             coefficients.Add(ordenedPairs.ElementAt(0).yValue);
 
             for (int count = 1; count < ordenedPairs.Count; count++)
-            {            
-                float newCoefficient = ((float)ordenedPairs.ElementAt(0).yValue * (float)calculateForwardDifferencesOfOrdenedPairs(count, ordenedPairs.Take(count + 1).ToList<OrdenedPair>())) / (float) MathHelper.calculateFactorial(count) * (float) Math.Pow( (double) (ordenedPairs.ElementAt(count).xValue - ordenedPairs.ElementAt(count - 1).xValue),(double)count);
+            {        
+                var newCoefficient = ((float)calculateForwardDifferencesOfOrdenedPairs(count, ordenedPairs.Take(count + 1).ToList<OrdenedPair>())) / ((float) MathHelper.calculateFactorial(count) * (float) Math.Pow( (double) (ordenedPairs.ElementAt(count).xValue - ordenedPairs.ElementAt(count - 1).xValue),(double)count));
                 coefficients.Add(newCoefficient);
             }
 

@@ -33,6 +33,7 @@ namespace GUI
             }
 
             float parsedX = -1, parsedY = -1;
+
             if ((float.TryParse(txtXValue.Text, out parsedX)) & (float.TryParse(txtYValue.Text, out parsedY)))
             {
                 if(ordenedPairs.Count(aPair=> aPair.xValue.Equals(parsedX)).Equals(0) ){
