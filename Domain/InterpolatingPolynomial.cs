@@ -71,7 +71,8 @@ namespace Domain
 
             for (int count = 1; count <= coefficients.Count - 1; count++)
             {
-                stringBuilder.Append(" + " + coefficients.ElementAt(count));
+                var coefficientWithSign = coefficients.ElementAt(count) >= 0 ? " + " + coefficients.ElementAt(count) : " - " + coefficients.ElementAt(count).ToString().Substring(1);
+                stringBuilder.Append(coefficientWithSign);
 
                 for (int auxCount = 0; auxCount < count; auxCount++)
                     stringBuilder.Append(" * ( X - " + ordenedPairs.ElementAt(auxCount).xValue +" )");
