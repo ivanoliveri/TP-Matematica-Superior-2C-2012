@@ -9,9 +9,9 @@ namespace Domain
     {
         #region Properties
 
-        public int xValue { set; get; }
+        public float xValue { set; get; }
 
-        public int yValue {set;get; }
+        public float yValue {set;get; }
 
         #endregion
 

@@ -23,7 +23,7 @@ namespace Domain
             coefficients = new List<float>();
         }
 
-        public int calculateForwardDifferencesOfOrdenedPairs(int maxOrder,List<OrdenedPair> someOrdenedPairs){
+        public float calculateForwardDifferencesOfOrdenedPairs(int maxOrder,List<OrdenedPair> someOrdenedPairs){
 
             List<OrdenedPair> resultantOrdenedPairds=null;
 
@@ -53,8 +53,8 @@ namespace Domain
             coefficients.Add(ordenedPairs.ElementAt(0).yValue);
 
             for (int count = 1; count < ordenedPairs.Count; count++)
-            {
-                float newCoefficient = ((float)ordenedPairs.ElementAt(0).yValue * (float)calculateForwardDifferencesOfOrdenedPairs(count, ordenedPairs.Take(count + 1).ToList<OrdenedPair>())) / ((float)MathHelper.calculateFactorial(count) * (float) (ordenedPairs.ElementAt(count).xValue - ordenedPairs.ElementAt(count - 1).xValue));
+            {            
+                float newCoefficient = ((float)ordenedPairs.ElementAt(0).yValue * (float)calculateForwardDifferencesOfOrdenedPairs(count, ordenedPairs.Take(count + 1).ToList<OrdenedPair>())) / (float) MathHelper.calculateFactorial(count) * (float) Math.Pow( (double) (ordenedPairs.ElementAt(count).xValue - ordenedPairs.ElementAt(count - 1).xValue),(double)count);
                 coefficients.Add(newCoefficient);
             }
 

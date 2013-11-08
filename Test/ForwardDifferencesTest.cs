@@ -10,7 +10,7 @@ namespace Test
     [TestClass]
     public class ForwardDifferencesTest
     {
-        //Ejemplo extraido de la pagina 81 de la Guia Teorica @ 2 Parte
+
         [TestMethod]
         public void test_forward_differences_1()
         {
@@ -34,5 +34,26 @@ namespace Test
 
             Assert.AreEqual(16, result);
         }
+
+        [TestMethod]
+        public void test_forward_differences_2()
+        {
+            var ordenedPairOne = new OrdenedPair { xValue = 1, yValue = 91 };
+            var ordenedPairTwo = new OrdenedPair { xValue = 4, yValue = 84 };
+            var ordenedPairThree = new OrdenedPair { xValue = 5, yValue = 77 };
+            var ordenedPairFour = new OrdenedPair { xValue = 9, yValue = 51 };
+
+            var interpolatingPolynomial = new InterpolatingPolynomial();
+
+            interpolatingPolynomial.ordenedPairs.Add(ordenedPairOne);
+            interpolatingPolynomial.ordenedPairs.Add(ordenedPairTwo);
+            interpolatingPolynomial.ordenedPairs.Add(ordenedPairThree);
+            interpolatingPolynomial.ordenedPairs.Add(ordenedPairFour);
+
+            var result = interpolatingPolynomial.calculateForwardDifferencesOfOrdenedPairs(3, interpolatingPolynomial.ordenedPairs);
+
+            Assert.AreEqual(-19, result);
+        }
+
     }
 }

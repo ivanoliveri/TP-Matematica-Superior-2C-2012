@@ -32,23 +32,29 @@ namespace GUI
                 return;
             }
 
-            int parsedX = -1, parsedY = -1;
-            if ((int.TryParse(txtXValue.Text, out parsedX)) & (int.TryParse(txtYValue.Text, out parsedY)))
+            float parsedX = -1, parsedY = -1;
+            if ((float.TryParse(txtXValue.Text, out parsedX)) & (float.TryParse(txtYValue.Text, out parsedY)))
             {
-                var newOrdenedPair = new OrdenedPair()
+                if(ordenedPairs.Count(aPair=> aPair.xValue.Equals(parsedX)).Equals(0) ){
+                    var newOrdenedPair = new OrdenedPair()
+                    {
+                        xValue = float.Parse(txtXValue.Text),
+                        yValue = float.Parse(txtYValue.Text)
+                    };
+
+
+                    ordenedPairs.Add(newOrdenedPair);
+                    ordenedPairs = ordenedPairs.OrderByDescending(aPair => aPair.xValue).Reverse().ToList();
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = ordenedPairs;
+
+                    txtXValue.Clear();
+                    txtYValue.Clear();
+                }
+                else
                 {
-                    xValue = int.Parse(txtXValue.Text),
-                    yValue = int.Parse(txtYValue.Text)
-                };
-
-
-                ordenedPairs.Add(newOrdenedPair);
-                ordenedPairs = ordenedPairs.OrderByDescending(aPair => aPair.xValue).Reverse().ToList();
-                dataGridView1.DataSource = null;
-                dataGridView1.DataSource = ordenedPairs;
-
-                txtXValue.Clear();
-                txtYValue.Clear();
+                    MessageBox.Show("Ya has ingresado un Y para ese valor de X.");
+                }
             }
             else
             {
@@ -83,7 +89,7 @@ namespace GUI
             }
             else
             {
-                MessageBox.Show("Debe ingresar datos");
+                MessageBox.Show("No has ingresado datos.");
                 return;
             }
         }
