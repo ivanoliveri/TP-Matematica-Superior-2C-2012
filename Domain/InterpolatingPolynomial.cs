@@ -23,46 +23,6 @@ namespace Domain
             coefficients = new List<float>();
         }
 
-        //public float calculateForwardDifferencesOfOrdenedPairs(int maxOrder, List<OrdenedPair> someOrdenedPairs)
-        //{
-
-        //    List<OrdenedPair> resultantOrdenedPairs = null;
-
-        //    for (int countOrder = 0; countOrder < maxOrder; countOrder++)
-        //    {
-
-        //        if (resultantOrdenedPairs == null)
-        //            resultantOrdenedPairs = someOrdenedPairs;
-
-        //        var newResultantOrdenedPairs = new List<OrdenedPair>();
-
-        //        for (int count = 0; count < resultantOrdenedPairs.Count - 1; count++)
-        //        {
-        //            var newYValue = resultantOrdenedPairs.ElementAt(count + 1).yValue - resultantOrdenedPairs.ElementAt(count).yValue;
-        //            newResultantOrdenedPairs.Add(new OrdenedPair { yValue = newYValue });
-        //        }
-
-        //        resultantOrdenedPairs = newResultantOrdenedPairs;
-
-        //    }
-
-        //    return resultantOrdenedPairs.ElementAt(0).yValue;
-
-        //}
-
-        //public List<float> calculateCoefficients()
-        //{
-        //    coefficients.Add(ordenedPairs.ElementAt(0).yValue);
-
-        //    for (int count = 1; count < ordenedPairs.Count; count++)
-        //    {
-        //        var newCoefficient = ((float)calculateForwardDifferencesOfOrdenedPairs(count, ordenedPairs.Take(count + 1).ToList<OrdenedPair>())) / ((float)MathHelper.calculateFactorial(count) * (float)Math.Pow((double)(ordenedPairs.ElementAt(count).xValue - ordenedPairs.ElementAt(count - 1).xValue), (double)count));
-        //        coefficients.Add(newCoefficient);
-        //    }
-
-        //    return coefficients;
-        //}
-
         public string calculateInterpolatingPolynomialUsingForwardDifferences()
         {
             calculateCoefficients();
@@ -76,8 +36,10 @@ namespace Domain
                 var coefficientWithSign = coefficients.ElementAt(count) >= 0 ? " + " + coefficients.ElementAt(count) : " - " + coefficients.ElementAt(count).ToString().Substring(1);
                 stringBuilder.Append(coefficientWithSign);
 
-                for (int auxCount = 0; auxCount < count; auxCount++)
-                    stringBuilder.Append(" * ( X - " + ordenedPairs.ElementAt(auxCount).xValue + " )");
+                for (int auxCount = 0; auxCount < count; auxCount++){
+                    var xValueToAdd = ordenedPairs.ElementAt(auxCount).xValue >= 0 ? " * ( X - " + ordenedPairs.ElementAt(auxCount).xValue + " )" : " * ( X + " + ordenedPairs.ElementAt(auxCount).xValue.ToString().Substring(1) + " )";
+                    stringBuilder.Append(xValueToAdd);
+                }
 
             }
 
