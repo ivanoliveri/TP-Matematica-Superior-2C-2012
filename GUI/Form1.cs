@@ -67,7 +67,7 @@ namespace GUI
 
         private void btnDeleteSelectedOrdenedPair_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.CurrentCell != null)            {
+            if (dataGridView1.CurrentCell != null){
                 var index = dataGridView1.CurrentCell.RowIndex;
                 ordenedPairs.RemoveAt(index);
                 ordenedPairs = ordenedPairs.OrderByDescending(aPair => aPair.xValue).Reverse().ToList();
@@ -83,14 +83,16 @@ namespace GUI
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
-            if (this.ordenedPairs.Any())
-            {
+            if (this.ordenedPairs.Any()){
                 var interpolatingPolynomial = new InterpolatingPolynomial() { ordenedPairs = this.ordenedPairs };
+
                 txtForwardInterpolatingPolynomial.Text = interpolatingPolynomial.calculateInterpolatingPolynomialUsingForwardDifferences();
-            }
-            else
-            {
+                
+                txtBackwardInterpolatingPolynomial.Text = interpolatingPolynomial.calculateInterpolatingPolynomialUsingBackwardDifferences();
+            }else{
+
                 MessageBox.Show("No has ingresado datos.");
+
                 return;
             }
         }

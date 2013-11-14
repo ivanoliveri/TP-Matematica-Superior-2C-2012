@@ -11,7 +11,9 @@ namespace Domain
 
         public List<OrdenedPair> ordenedPairs { set; get; }
 
-        public List<float> coefficients { set; get; }
+        public List<float> backwardCoefficients { set; get; }
+
+        public List<float> forwardCoefficients { set; get; }
 
         #endregion
 
@@ -20,20 +22,21 @@ namespace Domain
         public InterpolatingPolynomial()
         {
             ordenedPairs = new List<OrdenedPair>();
-            coefficients = new List<float>();
+            forwardCoefficients = new List<float>();
+            backwardCoefficients = new List<float>();
         }
 
         public string calculateInterpolatingPolynomialUsingForwardDifferences()
         {
-            calculateCoefficients();
+            this.calculateCoefficientsUsingForwardDifferences();
 
             var stringBuilder = new StringBuilder();
 
-            stringBuilder.Append(coefficients.ElementAt(0));
+            stringBuilder.Append(forwardCoefficients.ElementAt(0));
 
-            for (int count = 1; count <= coefficients.Count - 1; count++)
+            for (int count = 1; count <= forwardCoefficients.Count - 1; count++)
             {
-                var coefficientWithSign = coefficients.ElementAt(count) >= 0 ? " + " + coefficients.ElementAt(count) : " - " + coefficients.ElementAt(count).ToString().Substring(1);
+                var coefficientWithSign = forwardCoefficients.ElementAt(count) >= 0 ? " + " + forwardCoefficients.ElementAt(count) : " - " + forwardCoefficients.ElementAt(count).ToString().Substring(1);
                 stringBuilder.Append(coefficientWithSign);
 
                 for (int auxCount = 0; auxCount < count; auxCount++){
@@ -46,13 +49,7 @@ namespace Domain
             return stringBuilder.ToString();
         }
 
-        public string calculateInterpolatingPolynomialUsingBackwardDifferences()
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public float calculateForwardDividedDifferencesOfOrdenedPairsOfOrder1(List<OrdenedPair> someOrdenedPairs)
+        public float calculateDividedDifferencesOfOrdenedPairsOfOrder1(List<OrdenedPair> someOrdenedPairs)
         {
 
             var newDifference = (someOrdenedPairs.ElementAt(0).yValue - someOrdenedPairs.ElementAt(1).yValue) /
@@ -75,11 +72,11 @@ namespace Domain
 
                 if(partialResultantList.Count.Equals(0)){
 
-                    dividedDifferencesOfOrdenedPairsOfOrder1.Add(this.calculateForwardDividedDifferencesOfOrdenedPairsOfOrder1(new List<OrdenedPair>(){someOrdenedPairs.ElementAt(count),someOrdenedPairs.ElementAt(count - 1)}));
+                    dividedDifferencesOfOrdenedPairsOfOrder1.Add(this.calculateDividedDifferencesOfOrdenedPairsOfOrder1(new List<OrdenedPair>(){someOrdenedPairs.ElementAt(count),someOrdenedPairs.ElementAt(count - 1)}));
                 
                 }else{
 
-                    dividedDifferencesOfOrdenedPairsOfOrder1.Add(this.calculateForwardDividedDifferencesOfOrdenedPairsOfOrder1(new List<OrdenedPair>() { new OrdenedPair() { yValue = partialResultantList.ElementAt(count - 1), xValue = someOrdenedPairs.ElementAt(minCount+increment).xValue }, new OrdenedPair() { yValue = partialResultantList.ElementAt(count), xValue = someOrdenedPairs.ElementAt(minCount).xValue } })); 
+                    dividedDifferencesOfOrdenedPairsOfOrder1.Add(this.calculateDividedDifferencesOfOrdenedPairsOfOrder1(new List<OrdenedPair>() { new OrdenedPair() { yValue = partialResultantList.ElementAt(count - 1), xValue = someOrdenedPairs.ElementAt(minCount+increment).xValue }, new OrdenedPair() { yValue = partialResultantList.ElementAt(count), xValue = someOrdenedPairs.ElementAt(minCount).xValue } })); 
 
                     minCount++;
                 }
@@ -96,7 +93,7 @@ namespace Domain
 
             }else{
 
-                calculatedCoefficients.Add(dividedDifferencesOfOrdenedPairsOfOrder1.ElementAt(0));
+                calculatedCoefficients.Add(dividedDifferencesOfOrdenedPairsOfOrder1.ElementAt(dividedDifferencesOfOrdenedPairsOfOrder1.Count-1));
 
 
                 partialResultantList = ((IEnumerable<float>)dividedDifferencesOfOrdenedPairsOfOrder1).Reverse().ToList();
@@ -108,15 +105,98 @@ namespace Domain
             return calculatedCoefficients;
         }
 
-        public List<float> calculateCoefficients()
+        public List<float> calculateCoefficientsUsingForwardDifferences()
         {
-            coefficients = new List<float>();
-            coefficients.Add(ordenedPairs.ElementAt(0).yValue);
-            this.calculateForwardDividedDifferencesOfOrdenedPairs(ordenedPairs.Count,1, ordenedPairs, null,new List<float>()).ForEach(oneCoefficient => coefficients.Add(oneCoefficient));
+            forwardCoefficients = new List<float>();
+            forwardCoefficients.Add(ordenedPairs.ElementAt(0).yValue);
+            this.calculateForwardDividedDifferencesOfOrdenedPairs(ordenedPairs.Count, 1, ordenedPairs, null, new List<float>()).ForEach(oneCoefficient => forwardCoefficients.Add(oneCoefficient));
 
-           
-             
-            return coefficients;
+            return forwardCoefficients;
+        }
+
+        public List<float> calculateBackwardDividedDifferencesOfOrdenedPairs(int maxOrder, int increment, List<OrdenedPair> someOrdenedPairs, List<float> partialResults, List<float> calculatedCoefficients)
+        {
+            var partialResultantList = partialResults == null ? new List<float>() : partialResults;
+
+            var dividedDifferencesOfOrdenedPairsOfOrder1 = new List<float>();
+
+            var minCount = 0;
+
+            for (int count = maxOrder - 1; count > 0; count--)
+            {
+
+                if (partialResultantList.Count.Equals(0))
+                {
+
+                    dividedDifferencesOfOrdenedPairsOfOrder1.Add(this.calculateDividedDifferencesOfOrdenedPairsOfOrder1(new List<OrdenedPair>() { someOrdenedPairs.ElementAt(count), someOrdenedPairs.ElementAt(count - 1) }));
+
+                }
+                else
+                {
+
+                    dividedDifferencesOfOrdenedPairsOfOrder1.Add(this.calculateDividedDifferencesOfOrdenedPairsOfOrder1(new List<OrdenedPair>() { new OrdenedPair() { yValue = partialResultantList.ElementAt(count - 1), xValue = someOrdenedPairs.ElementAt(minCount + increment).xValue }, new OrdenedPair() { yValue = partialResultantList.ElementAt(count), xValue = someOrdenedPairs.ElementAt(minCount).xValue } }));
+
+                    minCount++;
+                }
+            }
+
+            maxOrder = maxOrder - 1;
+
+            if (partialResultantList.Count.Equals(0))
+            {
+
+                calculatedCoefficients.Add(dividedDifferencesOfOrdenedPairsOfOrder1.ElementAt(0));
+
+
+                partialResultantList = dividedDifferencesOfOrdenedPairsOfOrder1;
+
+            }
+            else
+            {
+
+                calculatedCoefficients.Add(dividedDifferencesOfOrdenedPairsOfOrder1.ElementAt(maxOrder - 1));
+
+
+                partialResultantList = ((IEnumerable<float>)dividedDifferencesOfOrdenedPairsOfOrder1).Reverse().ToList();
+            }
+
+            if (!partialResultantList.Count.Equals(1))
+                this.calculateForwardDividedDifferencesOfOrdenedPairs(maxOrder, increment + 1, someOrdenedPairs, partialResultantList, calculatedCoefficients);
+
+            return calculatedCoefficients;
+        }
+
+        public List<float> calculateCoefficientsUsingBackwardDifferences()
+        {
+            backwardCoefficients = new List<float>();
+            backwardCoefficients.Add(ordenedPairs.ElementAt(ordenedPairs.Count - 1).yValue);
+            this.calculateBackwardDividedDifferencesOfOrdenedPairs(ordenedPairs.Count, 1, ordenedPairs, null, new List<float>()).ForEach(oneCoefficient => backwardCoefficients.Add(oneCoefficient));
+
+            return backwardCoefficients;
+        }
+
+        public string calculateInterpolatingPolynomialUsingBackwardDifferences()
+        {
+            this.calculateCoefficientsUsingBackwardDifferences();
+
+            var stringBuilder = new StringBuilder();
+
+            stringBuilder.Append(backwardCoefficients.ElementAt(0));
+
+            for (int count = 1; count <= backwardCoefficients.Count - 1; count++)
+            {
+                var coefficientWithSign = backwardCoefficients.ElementAt(count) >= 0 ? " + " + backwardCoefficients.ElementAt(count) : " - " + backwardCoefficients.ElementAt(count).ToString().Substring(1);
+                stringBuilder.Append(coefficientWithSign);
+
+                for (int auxCount = 1; auxCount <= count; auxCount++)
+                {
+                    var xValueToAdd = ordenedPairs.ElementAt(ordenedPairs.Count - auxCount).xValue >= 0 ? " * ( X - " + ordenedPairs.ElementAt(ordenedPairs.Count - auxCount).xValue + " )" : " * ( X + " + ordenedPairs.ElementAt(ordenedPairs.Count - auxCount).xValue.ToString().Substring(1) + " )";
+                    stringBuilder.Append(xValueToAdd);
+                }
+
+            }
+
+            return stringBuilder.ToString();
         }
 
         #endregion
