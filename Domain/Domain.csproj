@@ -41,7 +41,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InterpolatingPolynomial.cs" />
-    <Compile Include="MathHelper.cs" />
     <Compile Include="OrdenedPair.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

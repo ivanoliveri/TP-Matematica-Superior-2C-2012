@@ -32,7 +32,7 @@ namespace GUI
                 return;
             }
 
-            float parsedX = -1, parsedY = -1;
+            float parsedX , parsedY ;
 
             if ((float.TryParse(txtXValue.Text, out parsedX)) & (float.TryParse(txtYValue.Text, out parsedY)))
             {
