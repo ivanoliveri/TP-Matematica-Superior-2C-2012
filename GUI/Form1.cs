@@ -15,6 +15,10 @@ namespace GUI
 
         public List<OrdenedPair> ordenedPairs { set; get; }
 
+        public float maxX { set; get; }
+
+        public float minX { set; get; }
+
         public frmMain()
         {
             ordenedPairs = new List<OrdenedPair>();
@@ -23,7 +27,7 @@ namespace GUI
             
         }
 
-		        private void btnAddOrdenedPair_Click(object sender, EventArgs e)
+		private void btnAddOrdenedPair_Click(object sender, EventArgs e)
         {
 
             if (txtXValue.Text.Trim().Equals("") || txtYValue.Text.Trim().Equals(""))
@@ -81,17 +85,77 @@ namespace GUI
             Application.Exit();
         }
 
-        private void btnCalculate_Click(object sender, EventArgs e)
+        private void btnDeleteAllOrdenedPairs_Click(object sender, EventArgs e)
         {
-            if (this.ordenedPairs.Any()){
+            this.ordenedPairs = new List<OrdenedPair>();
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = ordenedPairs;
+            txtBackwardInterpolatingPolynomial.Clear();
+            txtForwardInterpolatingPolynomial.Clear();
+            txtXValueToEvaluate.Clear();
+            txtInterpolationInterval.Clear();
+            txtResultOfEvaluation.Clear();
+        }
+
+        private void btnCalculatePolynomial_Click(object sender, EventArgs e)
+        {
+            if (this.ordenedPairs.Any())
+            {
                 var interpolatingPolynomial = new InterpolatingPolynomial() { ordenedPairs = this.ordenedPairs };
 
                 txtForwardInterpolatingPolynomial.Text = interpolatingPolynomial.calculateInterpolatingPolynomialUsingForwardDifferences();
-                
+
                 txtBackwardInterpolatingPolynomial.Text = interpolatingPolynomial.calculateInterpolatingPolynomialUsingBackwardDifferences();
-            }else{
+
+                var xValues = new List<float>();
+
+                ordenedPairs.ForEach(aPair=> xValues.Add(aPair.xValue));
+
+                this.maxX = xValues.Max();
+
+                this.minX = xValues.Min();
+
+                txtInterpolationInterval.Text =
+                    new StringBuilder().Append("[")
+                        .Append(this.minX)
+                        .Append(",")
+                        .Append(this.maxX)
+                        .Append("]")
+                        .ToString();
+            }
+            else
+            {
 
                 MessageBox.Show("No has ingresado datos.");
+
+                return;
+            }
+        }
+
+        private void btnEvaluatePolynomial_Click(object sender, EventArgs e){
+
+            float aValue;
+
+            if (txtBackwardInterpolatingPolynomial.Text.Trim().Equals("") ||
+                txtForwardInterpolatingPolynomial.Text.Trim().Equals("")){
+
+                    MessageBox.Show("Para evaluar un valor primero es necesario calcular los polinomios de interpolacion.");
+
+                    return;                
+            }
+
+            if (!float.TryParse(txtXValueToEvaluate.Text, out aValue))
+            {
+
+                MessageBox.Show("El valor ingresado no es un numero.");
+
+                return;
+            }
+
+            if (float.Parse(txtXValueToEvaluate.Text) > this.maxX ||
+                (float.Parse(txtXValueToEvaluate.Text) < this.minX)){
+                
+                MessageBox.Show("El valor a evaluar no se encuentra dentro del intervalo de interpolacion.");
 
                 return;
             }
