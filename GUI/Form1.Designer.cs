@@ -39,25 +39,25 @@
             this.btnDeleteSelectedOrdenedPair = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtOrdenedPairsCount = new System.Windows.Forms.TextBox();
+            this.txtPolynomialDegree = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.txtBackwardInterpolatingPolynomial = new System.Windows.Forms.TextBox();
             this.txtForwardInterpolatingPolynomial = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnEvaluatePolynomial = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnCalculatePolynomial = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtXValueToEvaluate = new System.Windows.Forms.TextBox();
-            this.txtInterpolationInterval = new System.Windows.Forms.TextBox();
             this.txtResultOfEvaluation = new System.Windows.Forms.TextBox();
-            this.btnEvaluatePolynomial = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtPolynomialDegree = new System.Windows.Forms.TextBox();
-            this.txtOrdenedPairsCount = new System.Windows.Forms.TextBox();
+            this.txtInterpolationInterval = new System.Windows.Forms.TextBox();
+            this.txtXValueToEvaluate = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -157,6 +157,7 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Enabled = false;
             this.dataGridView1.Location = new System.Drawing.Point(7, 20);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -179,6 +180,39 @@
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Resultados";
+            // 
+            // txtOrdenedPairsCount
+            // 
+            this.txtOrdenedPairsCount.Location = new System.Drawing.Point(173, 94);
+            this.txtOrdenedPairsCount.Name = "txtOrdenedPairsCount";
+            this.txtOrdenedPairsCount.Size = new System.Drawing.Size(328, 20);
+            this.txtOrdenedPairsCount.TabIndex = 7;
+            this.txtOrdenedPairsCount.Text = "0";
+            // 
+            // txtPolynomialDegree
+            // 
+            this.txtPolynomialDegree.Location = new System.Drawing.Point(172, 68);
+            this.txtPolynomialDegree.Name = "txtPolynomialDegree";
+            this.txtPolynomialDegree.Size = new System.Drawing.Size(328, 20);
+            this.txtPolynomialDegree.TabIndex = 6;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(8, 97);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(161, 13);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Cantidad de Puntos Ingresados :";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(8, 72);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(107, 13);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Grado del Polinomio :";
             // 
             // txtBackwardInterpolatingPolynomial
             // 
@@ -224,6 +258,16 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Operaciones";
             // 
+            // btnEvaluatePolynomial
+            // 
+            this.btnEvaluatePolynomial.Location = new System.Drawing.Point(7, 56);
+            this.btnEvaluatePolynomial.Name = "btnEvaluatePolynomial";
+            this.btnEvaluatePolynomial.Size = new System.Drawing.Size(494, 31);
+            this.btnEvaluatePolynomial.TabIndex = 8;
+            this.btnEvaluatePolynomial.Text = "Evaluar Polinomios Interpolantes en Valor Ingresado";
+            this.btnEvaluatePolynomial.UseVisualStyleBackColor = true;
+            this.btnEvaluatePolynomial.Click += new System.EventHandler(this.btnEvaluatePolynomial_Click);
+            // 
             // btnExit
             // 
             this.btnExit.Location = new System.Drawing.Point(7, 92);
@@ -259,23 +303,26 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Evaluar Punto";
             // 
-            // label5
+            // txtResultOfEvaluation
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 26);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(107, 13);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Valor de X a Evaluar:";
+            this.txtResultOfEvaluation.Location = new System.Drawing.Point(143, 73);
+            this.txtResultOfEvaluation.Name = "txtResultOfEvaluation";
+            this.txtResultOfEvaluation.Size = new System.Drawing.Size(357, 20);
+            this.txtResultOfEvaluation.TabIndex = 6;
             // 
-            // label6
+            // txtInterpolationInterval
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 50);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(130, 13);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Intervalo de Interpolacion:";
+            this.txtInterpolationInterval.Location = new System.Drawing.Point(143, 49);
+            this.txtInterpolationInterval.Name = "txtInterpolationInterval";
+            this.txtInterpolationInterval.Size = new System.Drawing.Size(357, 20);
+            this.txtInterpolationInterval.TabIndex = 5;
+            // 
+            // txtXValueToEvaluate
+            // 
+            this.txtXValueToEvaluate.Location = new System.Drawing.Point(144, 23);
+            this.txtXValueToEvaluate.Name = "txtXValueToEvaluate";
+            this.txtXValueToEvaluate.Size = new System.Drawing.Size(357, 20);
+            this.txtXValueToEvaluate.TabIndex = 4;
             // 
             // label7
             // 
@@ -286,69 +333,23 @@
             this.label7.TabIndex = 3;
             this.label7.Text = "Resultado Obtenido:";
             // 
-            // txtXValueToEvaluate
+            // label6
             // 
-            this.txtXValueToEvaluate.Location = new System.Drawing.Point(144, 23);
-            this.txtXValueToEvaluate.Name = "txtXValueToEvaluate";
-            this.txtXValueToEvaluate.Size = new System.Drawing.Size(357, 20);
-            this.txtXValueToEvaluate.TabIndex = 4;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 50);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(130, 13);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Intervalo de Interpolacion:";
             // 
-            // txtInterpolationInterval
+            // label5
             // 
-            this.txtInterpolationInterval.Location = new System.Drawing.Point(143, 49);
-            this.txtInterpolationInterval.Name = "txtInterpolationInterval";
-            this.txtInterpolationInterval.Size = new System.Drawing.Size(357, 20);
-            this.txtInterpolationInterval.TabIndex = 5;
-            // 
-            // txtResultOfEvaluation
-            // 
-            this.txtResultOfEvaluation.Location = new System.Drawing.Point(143, 73);
-            this.txtResultOfEvaluation.Name = "txtResultOfEvaluation";
-            this.txtResultOfEvaluation.Size = new System.Drawing.Size(357, 20);
-            this.txtResultOfEvaluation.TabIndex = 6;
-            // 
-            // btnEvaluatePolynomial
-            // 
-            this.btnEvaluatePolynomial.Location = new System.Drawing.Point(7, 56);
-            this.btnEvaluatePolynomial.Name = "btnEvaluatePolynomial";
-            this.btnEvaluatePolynomial.Size = new System.Drawing.Size(494, 31);
-            this.btnEvaluatePolynomial.TabIndex = 8;
-            this.btnEvaluatePolynomial.Text = "Evaluar Polinomios Interpolantes en Valor Ingresado";
-            this.btnEvaluatePolynomial.UseVisualStyleBackColor = true;
-            this.btnEvaluatePolynomial.Click += new System.EventHandler(this.btnEvaluatePolynomial_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(8, 72);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(107, 13);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "Grado del Polinomio :";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(8, 97);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(161, 13);
-            this.label9.TabIndex = 5;
-            this.label9.Text = "Cantidad de Puntos Ingresados :";
-            // 
-            // txtPolynomialDegree
-            // 
-            this.txtPolynomialDegree.Location = new System.Drawing.Point(172, 68);
-            this.txtPolynomialDegree.Name = "txtPolynomialDegree";
-            this.txtPolynomialDegree.Size = new System.Drawing.Size(328, 20);
-            this.txtPolynomialDegree.TabIndex = 6;
-            // 
-            // txtOrdenedPairsCount
-            // 
-            this.txtOrdenedPairsCount.Location = new System.Drawing.Point(173, 94);
-            this.txtOrdenedPairsCount.Name = "txtOrdenedPairsCount";
-            this.txtOrdenedPairsCount.Size = new System.Drawing.Size(328, 20);
-            this.txtOrdenedPairsCount.TabIndex = 7;
-            this.txtOrdenedPairsCount.Text = "0";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(7, 26);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(107, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Valor de X a Evaluar:";
             // 
             // frmMain
             // 

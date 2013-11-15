@@ -225,6 +225,24 @@ namespace Domain
             return result;
         }
 
+        public string getInterpolationInterval(){
+
+            var xValues = new List<float>();
+
+            ordenedPairs.ForEach(aPair => xValues.Add(aPair.xValue));
+
+            var maxX = xValues.Max();
+
+            var minX = xValues.Min();
+
+            return  new StringBuilder().Append("[")
+                                       .Append(minX)
+                                       .Append(",")
+                                       .Append(maxX)
+                                       .Append("]")
+                                       .ToString();
+        }
+
         #endregion
     }
 }

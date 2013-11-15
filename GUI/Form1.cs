@@ -62,10 +62,27 @@ namespace GUI
 
                     txtXValue.Clear();
                     txtYValue.Clear();
-                }
-                else
-                {
+
+                    if (!txtBackwardInterpolatingPolynomial.Text.Trim().Equals("") &&
+                        this.interpolatingPolynomial.evaluatePolynomialAt(parsedX).Equals(parsedY)){
+                        MessageBox.Show("El par ingresado no modifica a los polinomios previamente calculado.");
+                        txtInterpolationInterval.Text = this.interpolatingPolynomial.getInterpolationInterval();
+                    }
+                    if (!txtBackwardInterpolatingPolynomial.Text.Trim().Equals("") &&
+                        !this.interpolatingPolynomial.evaluatePolynomialAt(parsedX).Equals(parsedY)){
+                        MessageBox.Show(
+                            "El par ingresado no verifica con los polinomios previamente calculados por lo que es necesario volver a calcular los polinomios. Cuando hayas terminado de ingresar los pares ordenados para recalcular el polinomio, es necesario que hagas click nuevamente en Calcular Polinomios.");
+                        txtPolynomialDegree.Clear();
+                        txtForwardInterpolatingPolynomial.Clear();
+                        txtBackwardInterpolatingPolynomial.Clear();
+                        txtXValueToEvaluate.Clear();
+                        txtInterpolationInterval.Clear();
+                        txtResultOfEvaluation.Clear();
+                    }
+                }else{
+
                     MessageBox.Show("Ya has ingresado un Y para ese valor de X.");
+
                 }
             }
             else
@@ -111,6 +128,14 @@ namespace GUI
         {
             if (this.ordenedPairs.Any()){
 
+                if (this.ordenedPairs.Count.Equals(1)){
+
+                    MessageBox.Show(
+                        "Es necesario ingresar como minimo dos puntos para poder calcular los polinomios interpoladores mediante Newton-Gregory.");
+
+                    return;
+                }
+
                 interpolatingPolynomial.ordenedPairs = this.ordenedPairs;
 
                 txtForwardInterpolatingPolynomial.Text = interpolatingPolynomial.calculateInterpolatingPolynomialUsingForwardDifferences();
@@ -127,16 +152,9 @@ namespace GUI
 
                 this.minX = xValues.Min();
 
-                txtInterpolationInterval.Text =
-                    new StringBuilder().Append("[")
-                        .Append(this.minX)
-                        .Append(",")
-                        .Append(this.maxX)
-                        .Append("]")
-                        .ToString();
-            }
-            else
-            {
+                txtInterpolationInterval.Text = this.interpolatingPolynomial.getInterpolationInterval();
+
+            }else{
 
                 MessageBox.Show("No has ingresado datos.");
 
