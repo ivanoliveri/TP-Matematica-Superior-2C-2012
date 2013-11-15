@@ -26,27 +26,39 @@ namespace Domain
             backwardCoefficients = new List<float>();
         }
 
+        public string buildPolynomialExpression(List<float> xValues,List<float> coefficients ){
+            var stringBuilder = new StringBuilder();
+
+            for (int count = 1; count <= coefficients.Count - 1; count++){
+                var coefficientWithSign = coefficients.ElementAt(count) >= 0
+                    ? " + " + coefficients.ElementAt(count)
+                    : " - " + coefficients.ElementAt(count).ToString().Substring(1);
+                stringBuilder.Append(coefficientWithSign);
+
+                for (int auxCount = 0; auxCount < count; auxCount++){
+                    var xValueToAdd = xValues.ElementAt(auxCount) >= 0
+                        ? " * ( X - " + xValues.ElementAt(auxCount) + " )"
+                        : " * ( X + " + xValues.ElementAt(auxCount).ToString().Substring(1) + " )";
+                    stringBuilder.Append(xValueToAdd);
+                }
+            }
+
+            return stringBuilder.ToString();
+        }
+
         public string calculateInterpolatingPolynomialUsingForwardDifferences()
         {
             this.calculateCoefficientsUsingForwardDifferences();
 
+            var xValues = new List<float>();
+
+            for (int count = 0; count < forwardCoefficients.Count; count++)
+                xValues.Add(ordenedPairs.ElementAt(count).xValue);
+
             var stringBuilder = new StringBuilder();
-
             stringBuilder.Append(forwardCoefficients.ElementAt(0));
+            return stringBuilder.Append(this.buildPolynomialExpression(xValues,this.forwardCoefficients)).ToString();
 
-            for (int count = 1; count <= forwardCoefficients.Count - 1; count++)
-            {
-                var coefficientWithSign = forwardCoefficients.ElementAt(count) >= 0 ? " + " + forwardCoefficients.ElementAt(count) : " - " + forwardCoefficients.ElementAt(count).ToString().Substring(1);
-                stringBuilder.Append(coefficientWithSign);
-
-                for (int auxCount = 0; auxCount < count; auxCount++){
-                    var xValueToAdd = ordenedPairs.ElementAt(auxCount).xValue >= 0 ? " * ( X - " + ordenedPairs.ElementAt(auxCount).xValue + " )" : " * ( X + " + ordenedPairs.ElementAt(auxCount).xValue.ToString().Substring(1) + " )";
-                    stringBuilder.Append(xValueToAdd);
-                }
-
-            }
-
-            return stringBuilder.ToString();
         }
 
         public List<float> calculateCoefficientsUsingForwardDifferences()
@@ -181,26 +193,21 @@ namespace Domain
 
         public string calculateInterpolatingPolynomialUsingBackwardDifferences()
         {
+
             this.calculateCoefficientsUsingBackwardDifferences();
 
+            var xValues = new List<float>();
+
+            for (int count = 0; count < forwardCoefficients.Count; count++)
+                xValues.Add(ordenedPairs.ElementAt(count).xValue);
+
+            xValues.Reverse();
+
             var stringBuilder = new StringBuilder();
-
             stringBuilder.Append(backwardCoefficients.ElementAt(0));
+            return stringBuilder.Append(this.buildPolynomialExpression(xValues,this.backwardCoefficients)).ToString();
 
-            for (int count = 1; count <= backwardCoefficients.Count - 1; count++)
-            {
-                var coefficientWithSign = backwardCoefficients.ElementAt(count) >= 0 ? " + " + backwardCoefficients.ElementAt(count) : " - " + backwardCoefficients.ElementAt(count).ToString().Substring(1);
-                stringBuilder.Append(coefficientWithSign);
-
-                for (int auxCount = 1; auxCount <= count; auxCount++)
-                {
-                    var xValueToAdd = ordenedPairs.ElementAt(ordenedPairs.Count - auxCount).xValue >= 0 ? " * ( X - " + ordenedPairs.ElementAt(ordenedPairs.Count - auxCount).xValue + " )" : " * ( X + " + ordenedPairs.ElementAt(ordenedPairs.Count - auxCount).xValue.ToString().Substring(1) + " )";
-                    stringBuilder.Append(xValueToAdd);
-                }
-
-            }
-
-            return stringBuilder.ToString();
+       
         }
 
         #endregion
