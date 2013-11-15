@@ -83,41 +83,19 @@ namespace Domain
 
             var partialResultantList = partialResults ?? new List<float>();
 
-            var dividedDifferencesOfOrdenedPairsOfOrder1 = new List<float>();
-
-            var minCount = 0;
-
-            for (int count = maxOrder - 1; count > 0; count--)
-            {
-
-                if (partialResultantList.Count.Equals(0))
-                {
-
-                    dividedDifferencesOfOrdenedPairsOfOrder1.Add(this.calculateDividedDifferencesOfOrdenedPairsOfOrder1(new List<OrdenedPair>() { someOrdenedPairs.ElementAt(count), someOrdenedPairs.ElementAt(count - 1) }));
-
-                }
-                else
-                {
-
-                    dividedDifferencesOfOrdenedPairsOfOrder1.Add(this.calculateDividedDifferencesOfOrdenedPairsOfOrder1(new List<OrdenedPair>() { new OrdenedPair() { yValue = partialResultantList.ElementAt(count - 1), xValue = someOrdenedPairs.ElementAt(minCount + increment).xValue }, new OrdenedPair() { yValue = partialResultantList.ElementAt(count), xValue = someOrdenedPairs.ElementAt(minCount).xValue } }));
-
-                    minCount++;
-                }
-            }
+            var dividedDifferencesOfOrdenedPairsOfOrder1 =  this.calculateColumnOfDividedDifferences(maxOrder,
+                                                            someOrdenedPairs, partialResultantList, increment);
 
             maxOrder = maxOrder - 1;
 
-            if (partialResultantList.Count.Equals(0))
-            {
+            if (partialResultantList.Count.Equals(0)){
 
                 calculatedCoefficients.Add(dividedDifferencesOfOrdenedPairsOfOrder1.ElementAt(maxOrder - 1));
 
 
                 partialResultantList = dividedDifferencesOfOrdenedPairsOfOrder1;
 
-            }
-            else
-            {
+            }else{
 
                 calculatedCoefficients.Add(dividedDifferencesOfOrdenedPairsOfOrder1.ElementAt(0));
 
@@ -131,45 +109,47 @@ namespace Domain
             return calculatedCoefficients;
         }
 
-        public List<float> calculateBackwardDividedDifferencesOfOrdenedPairs(int maxOrder, int increment, List<OrdenedPair> someOrdenedPairs, List<float> partialResults, List<float> calculatedCoefficients)
-        {
-            var partialResultantList = partialResults ?? new List<float>();
+        public List<float> calculateColumnOfDividedDifferences(int maxOrder, List<OrdenedPair> someOrdenedPairs, List<float> partialResults,int increment){
 
             var dividedDifferencesOfOrdenedPairsOfOrder1 = new List<float>();
 
             var minCount = 0;
 
-            for (int count = maxOrder - 1; count > 0; count--)
-            {
+            for (int count = maxOrder - 1; count > 0; count--){
 
-                if (partialResultantList.Count.Equals(0))
-                {
+                if (partialResults.Count.Equals(0)){
 
                     dividedDifferencesOfOrdenedPairsOfOrder1.Add(this.calculateDividedDifferencesOfOrdenedPairsOfOrder1(new List<OrdenedPair>() { someOrdenedPairs.ElementAt(count), someOrdenedPairs.ElementAt(count - 1) }));
 
-                }
-                else
-                {
+                }else{
 
-                    dividedDifferencesOfOrdenedPairsOfOrder1.Add(this.calculateDividedDifferencesOfOrdenedPairsOfOrder1(new List<OrdenedPair>() { new OrdenedPair() { yValue = partialResultantList.ElementAt(count - 1), xValue = someOrdenedPairs.ElementAt(minCount + increment).xValue }, new OrdenedPair() { yValue = partialResultantList.ElementAt(count), xValue = someOrdenedPairs.ElementAt(minCount).xValue } }));
+                    dividedDifferencesOfOrdenedPairsOfOrder1.Add(this.calculateDividedDifferencesOfOrdenedPairsOfOrder1(new List<OrdenedPair>() { new OrdenedPair() { yValue = partialResults.ElementAt(count - 1), xValue = someOrdenedPairs.ElementAt(minCount + increment).xValue }, new OrdenedPair() { yValue = partialResults.ElementAt(count), xValue = someOrdenedPairs.ElementAt(minCount).xValue } }));
 
                     minCount++;
                 }
+
             }
+
+            return dividedDifferencesOfOrdenedPairsOfOrder1;
+        }
+
+        public List<float> calculateBackwardDividedDifferencesOfOrdenedPairs(int maxOrder, int increment, List<OrdenedPair> someOrdenedPairs, List<float> partialResults, List<float> calculatedCoefficients)
+        {
+            var partialResultantList = partialResults ?? new List<float>();
+
+            var dividedDifferencesOfOrdenedPairsOfOrder1 =  this.calculateColumnOfDividedDifferences(maxOrder,
+                                                            someOrdenedPairs, partialResultantList, increment);
 
             maxOrder = maxOrder - 1;
 
-            if (partialResultantList.Count.Equals(0))
-            {
+            if (partialResultantList.Count.Equals(0)){
 
                 calculatedCoefficients.Add(dividedDifferencesOfOrdenedPairsOfOrder1.ElementAt(0));
 
 
                 partialResultantList = dividedDifferencesOfOrdenedPairsOfOrder1;
 
-            }
-            else
-            {
+            }else{
 
                 calculatedCoefficients.Add(dividedDifferencesOfOrdenedPairsOfOrder1.ElementAt(maxOrder - 1));
 
