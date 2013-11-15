@@ -209,6 +209,41 @@ namespace Domain
 
        
         }
+        /* Para determinar el grado del polinomio puedo elegir cualquiera de los dos polinomios ya que son EQUIVALENTES. Optamos evaluar usando el polinomio progresivo*/
+        public int getPolynomialDegree(){
+
+            var lastNotZeroCoefficientPosition = 0;
+
+            var auxCount = 0;
+
+            foreach (var forwardCoefficient in forwardCoefficients){
+                if (forwardCoefficient != 0)
+                    lastNotZeroCoefficientPosition = auxCount;
+                auxCount++;
+            }
+
+            return lastNotZeroCoefficientPosition;
+        }
+
+        /* Para evaluar puedo elegir cualquiera de los dos polinomios ya que son EQUIVALENTES. Optamos evaluar usando el polinomio progresivo*/
+        public float evaluatePolynomialAt(float aValue){
+
+            var xValues = new List<float>();
+
+            for (int count = 0; count < forwardCoefficients.Count; count++)
+                xValues.Add(ordenedPairs.ElementAt(count).xValue);
+
+            var result = forwardCoefficients.ElementAt(0);
+
+            for (int count = 1; count <= forwardCoefficients.Count - 1; count++){
+                var newTerm = forwardCoefficients.ElementAt(count);
+                for (int auxCount = 0; auxCount < count; auxCount++)
+                    newTerm *= (aValue-xValues.ElementAt(auxCount));
+                result += newTerm;
+            }
+
+            return result;
+        }
 
         #endregion
     }

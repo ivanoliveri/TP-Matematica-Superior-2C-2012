@@ -54,6 +54,10 @@
             this.txtInterpolationInterval = new System.Windows.Forms.TextBox();
             this.txtResultOfEvaluation = new System.Windows.Forms.TextBox();
             this.btnEvaluatePolynomial = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtPolynomialDegree = new System.Windows.Forms.TextBox();
+            this.txtOrdenedPairsCount = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -125,14 +129,14 @@
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Location = new System.Drawing.Point(12, 114);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(509, 231);
+            this.groupBox2.Size = new System.Drawing.Size(509, 210);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Valores Ingresados";
             // 
             // btnDeleteAllOrdenedPairs
             // 
-            this.btnDeleteAllOrdenedPairs.Location = new System.Drawing.Point(9, 191);
+            this.btnDeleteAllOrdenedPairs.Location = new System.Drawing.Point(9, 174);
             this.btnDeleteAllOrdenedPairs.Name = "btnDeleteAllOrdenedPairs";
             this.btnDeleteAllOrdenedPairs.Size = new System.Drawing.Size(492, 31);
             this.btnDeleteAllOrdenedPairs.TabIndex = 6;
@@ -142,7 +146,7 @@
             // 
             // btnDeleteSelectedOrdenedPair
             // 
-            this.btnDeleteSelectedOrdenedPair.Location = new System.Drawing.Point(9, 155);
+            this.btnDeleteSelectedOrdenedPair.Location = new System.Drawing.Point(9, 139);
             this.btnDeleteSelectedOrdenedPair.Name = "btnDeleteSelectedOrdenedPair";
             this.btnDeleteSelectedOrdenedPair.Size = new System.Drawing.Size(492, 31);
             this.btnDeleteSelectedOrdenedPair.TabIndex = 5;
@@ -156,32 +160,36 @@
             this.dataGridView1.Location = new System.Drawing.Point(7, 20);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(494, 128);
+            this.dataGridView1.Size = new System.Drawing.Size(494, 115);
             this.dataGridView1.TabIndex = 0;
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.txtOrdenedPairsCount);
+            this.groupBox3.Controls.Add(this.txtPolynomialDegree);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.txtBackwardInterpolatingPolynomial);
             this.groupBox3.Controls.Add(this.txtForwardInterpolatingPolynomial);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Location = new System.Drawing.Point(13, 349);
+            this.groupBox3.Location = new System.Drawing.Point(13, 325);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(508, 81);
+            this.groupBox3.Size = new System.Drawing.Size(508, 121);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Resultados";
             // 
             // txtBackwardInterpolatingPolynomial
             // 
-            this.txtBackwardInterpolatingPolynomial.Location = new System.Drawing.Point(124, 49);
+            this.txtBackwardInterpolatingPolynomial.Location = new System.Drawing.Point(124, 44);
             this.txtBackwardInterpolatingPolynomial.Name = "txtBackwardInterpolatingPolynomial";
             this.txtBackwardInterpolatingPolynomial.Size = new System.Drawing.Size(376, 20);
             this.txtBackwardInterpolatingPolynomial.TabIndex = 3;
             // 
             // txtForwardInterpolatingPolynomial
             // 
-            this.txtForwardInterpolatingPolynomial.Location = new System.Drawing.Point(124, 21);
+            this.txtForwardInterpolatingPolynomial.Location = new System.Drawing.Point(124, 18);
             this.txtForwardInterpolatingPolynomial.Name = "txtForwardInterpolatingPolynomial";
             this.txtForwardInterpolatingPolynomial.Size = new System.Drawing.Size(376, 20);
             this.txtForwardInterpolatingPolynomial.TabIndex = 2;
@@ -189,7 +197,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 52);
+            this.label4.Location = new System.Drawing.Point(6, 47);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(109, 13);
             this.label4.TabIndex = 1;
@@ -198,7 +206,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 23);
+            this.label3.Location = new System.Drawing.Point(6, 20);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(111, 13);
             this.label3.TabIndex = 0;
@@ -209,7 +217,7 @@
             this.groupBox4.Controls.Add(this.btnEvaluatePolynomial);
             this.groupBox4.Controls.Add(this.btnExit);
             this.groupBox4.Controls.Add(this.btnCalculatePolynomial);
-            this.groupBox4.Location = new System.Drawing.Point(13, 538);
+            this.groupBox4.Location = new System.Drawing.Point(13, 557);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(509, 128);
             this.groupBox4.TabIndex = 3;
@@ -244,7 +252,7 @@
             this.groupBox5.Controls.Add(this.label7);
             this.groupBox5.Controls.Add(this.label6);
             this.groupBox5.Controls.Add(this.label5);
-            this.groupBox5.Location = new System.Drawing.Point(12, 435);
+            this.groupBox5.Location = new System.Drawing.Point(12, 452);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(510, 100);
             this.groupBox5.TabIndex = 4;
@@ -309,11 +317,44 @@
             this.btnEvaluatePolynomial.UseVisualStyleBackColor = true;
             this.btnEvaluatePolynomial.Click += new System.EventHandler(this.btnEvaluatePolynomial_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(8, 72);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(107, 13);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Grado del Polinomio :";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(8, 97);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(161, 13);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Cantidad de Puntos Ingresados :";
+            // 
+            // txtPolynomialDegree
+            // 
+            this.txtPolynomialDegree.Location = new System.Drawing.Point(172, 68);
+            this.txtPolynomialDegree.Name = "txtPolynomialDegree";
+            this.txtPolynomialDegree.Size = new System.Drawing.Size(328, 20);
+            this.txtPolynomialDegree.TabIndex = 6;
+            // 
+            // txtOrdenedPairsCount
+            // 
+            this.txtOrdenedPairsCount.Location = new System.Drawing.Point(173, 94);
+            this.txtOrdenedPairsCount.Name = "txtOrdenedPairsCount";
+            this.txtOrdenedPairsCount.Size = new System.Drawing.Size(328, 20);
+            this.txtOrdenedPairsCount.TabIndex = 7;
+            this.txtOrdenedPairsCount.Text = "0";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(533, 672);
+            this.ClientSize = new System.Drawing.Size(533, 690);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -363,6 +404,10 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtOrdenedPairsCount;
+        private System.Windows.Forms.TextBox txtPolynomialDegree;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
     }
 }
 

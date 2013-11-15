@@ -15,6 +15,8 @@ namespace GUI
 
         public List<OrdenedPair> ordenedPairs { set; get; }
 
+        public InterpolatingPolynomial interpolatingPolynomial { set; get; }
+
         public float maxX { set; get; }
 
         public float minX { set; get; }
@@ -22,6 +24,8 @@ namespace GUI
         public frmMain()
         {
             ordenedPairs = new List<OrdenedPair>();
+
+            interpolatingPolynomial = new InterpolatingPolynomial();
 
             InitializeComponent();
             
@@ -49,9 +53,12 @@ namespace GUI
 
 
                     ordenedPairs.Add(newOrdenedPair);
+                    
                     ordenedPairs = ordenedPairs.OrderByDescending(aPair => aPair.xValue).Reverse().ToList();
                     dataGridView1.DataSource = null;
                     dataGridView1.DataSource = ordenedPairs;
+
+                    txtOrdenedPairsCount.Text = (int.Parse(txtOrdenedPairsCount.Text)+1).ToString();
 
                     txtXValue.Clear();
                     txtYValue.Clear();
@@ -77,6 +84,7 @@ namespace GUI
                 ordenedPairs = ordenedPairs.OrderByDescending(aPair => aPair.xValue).Reverse().ToList();
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = ordenedPairs;
+                txtOrdenedPairsCount.Text = (int.Parse(txtOrdenedPairsCount.Text) -1).ToString();
             }
         }
 
@@ -95,17 +103,21 @@ namespace GUI
             txtXValueToEvaluate.Clear();
             txtInterpolationInterval.Clear();
             txtResultOfEvaluation.Clear();
+            txtPolynomialDegree.Clear();
+            txtOrdenedPairsCount.Text = "0";
         }
 
         private void btnCalculatePolynomial_Click(object sender, EventArgs e)
         {
-            if (this.ordenedPairs.Any())
-            {
-                var interpolatingPolynomial = new InterpolatingPolynomial() { ordenedPairs = this.ordenedPairs };
+            if (this.ordenedPairs.Any()){
+
+                interpolatingPolynomial.ordenedPairs = this.ordenedPairs;
 
                 txtForwardInterpolatingPolynomial.Text = interpolatingPolynomial.calculateInterpolatingPolynomialUsingForwardDifferences();
 
                 txtBackwardInterpolatingPolynomial.Text = interpolatingPolynomial.calculateInterpolatingPolynomialUsingBackwardDifferences();
+
+                txtPolynomialDegree.Text = interpolatingPolynomial.getPolynomialDegree().ToString();
 
                 var xValues = new List<float>();
 
@@ -159,6 +171,8 @@ namespace GUI
 
                 return;
             }
+
+            txtResultOfEvaluation.Text = this.interpolatingPolynomial.evaluatePolynomialAt(float.Parse(txtXValueToEvaluate.Text)).ToString();
         }
 
     }
