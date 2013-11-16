@@ -205,6 +205,19 @@ namespace Domain
             return lastNotZeroCoefficientPosition;
         }
 
+        /* Se usa cuando se saca/agrega un par ordenado para evaluar el grado del nuevo polinomio sin calcularlo */
+        public int getPolynomialDegreeWithoutCalculatingInterpolatingPolynomial(List<OrdenedPair> somePairs ){
+
+            var newPolynomial = new InterpolatingPolynomial();
+
+            newPolynomial.ordenedPairs = somePairs;
+
+            newPolynomial.calculateCoefficientsUsingForwardDifferences();
+
+            return newPolynomial.getPolynomialDegree();
+
+        }
+
         /* Para evaluar puedo elegir cualquiera de los dos polinomios ya que son EQUIVALENTES. Optamos evaluar usando el polinomio progresivo*/
         public float evaluatePolynomialAt(float aValue){
 

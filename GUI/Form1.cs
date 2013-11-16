@@ -65,19 +65,36 @@ namespace GUI
 
                     if (!txtBackwardInterpolatingPolynomial.Text.Trim().Equals("") &&
                         this.interpolatingPolynomial.evaluatePolynomialAt(parsedX).Equals(parsedY)){
-                        MessageBox.Show("El par ingresado no modifica a los polinomios previamente calculado.");
-                        txtInterpolationInterval.Text = this.interpolatingPolynomial.getInterpolationInterval();
-                    }
-                    if (!txtBackwardInterpolatingPolynomial.Text.Trim().Equals("") &&
-                        !this.interpolatingPolynomial.evaluatePolynomialAt(parsedX).Equals(parsedY)){
+                        if (int.Parse(txtPolynomialDegree.Text) >
+                            interpolatingPolynomial.getPolynomialDegreeWithoutCalculatingInterpolatingPolynomial(
+                                ordenedPairs)){
+
+                                    MessageBox.Show("El par ingresado modifica a los polinomios previamente calculados debido a que existen polinomios interpoladores de menor grado.");
+
+                                    btnCalculatePolynomial_Click(sender, e);
+
+                                    txtResultOfEvaluation.Clear();
+
+                                    txtXValueToEvaluate.Clear();
+
+                        }else{
+
+                            MessageBox.Show(
+                                "El par ingresado no modifica a los polinomios previamente calculados.");
+                            txtInterpolationInterval.Text = this.interpolatingPolynomial.getInterpolationInterval();
+                        
+                        }
+                        }
+                    else if (!txtBackwardInterpolatingPolynomial.Text.Trim().Equals("")){
                         MessageBox.Show(
-                            "El par ingresado no verifica con los polinomios previamente calculados por lo que es necesario volver a calcular los polinomios. Cuando hayas terminado de ingresar los pares ordenados para recalcular el polinomio, es necesario que hagas click nuevamente en Calcular Polinomios.");
-                        txtPolynomialDegree.Clear();
-                        txtForwardInterpolatingPolynomial.Clear();
-                        txtBackwardInterpolatingPolynomial.Clear();
-                        txtXValueToEvaluate.Clear();
-                        txtInterpolationInterval.Clear();
+                            "El par ingresado no verifica con los polinomios previamente calculados por lo que es necesario volver a calcular los polinomios.");
+                        
+                        btnCalculatePolynomial_Click(sender, e);
+
                         txtResultOfEvaluation.Clear();
+
+                        txtXValueToEvaluate.Clear();
+
                     }
                 }else{
 
@@ -102,6 +119,37 @@ namespace GUI
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = ordenedPairs;
                 txtOrdenedPairsCount.Text = (int.Parse(txtOrdenedPairsCount.Text) -1).ToString();
+
+                if (dataGridView1.RowCount.Equals(1)){
+                    txtInterpolationInterval.Text = this.interpolatingPolynomial.getInterpolationInterval();
+                    txtPolynomialDegree.Clear();
+                    txtForwardInterpolatingPolynomial.Clear();
+                    txtBackwardInterpolatingPolynomial.Clear();
+                    txtXValueToEvaluate.Clear();
+                    txtInterpolationInterval.Clear();
+                    txtResultOfEvaluation.Clear();
+                    return;
+                }
+
+                if (!txtBackwardInterpolatingPolynomial.Text.Trim().Equals("") && int.Parse(txtPolynomialDegree.Text) >
+                    interpolatingPolynomial.getPolynomialDegreeWithoutCalculatingInterpolatingPolynomial(
+                        ordenedPairs)){
+
+                    MessageBox.Show(
+                        "El par eliminado modifica a los polinomios previamente calculados debido a que existen polinomios interpoladores de menor grado.");
+
+
+                    btnCalculatePolynomial_Click(sender, e);
+
+                    txtResultOfEvaluation.Clear();
+
+                    txtXValueToEvaluate.Clear();
+
+                }else if (!txtBackwardInterpolatingPolynomial.Text.Trim().Equals("")){
+
+                    MessageBox.Show("El par eliminado no modifica a los polinomios previamente calculados.");
+
+                }
             }
         }
 
